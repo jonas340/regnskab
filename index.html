@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Regnskab</title>
+<meta name="theme-color" content="#2F3FE0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Regnskab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="view"></main>
+
+<nav id="tabs" hidden aria-label="Hovedmenu">
+  <button data-act="tab" data-tab="overblik">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg><span>Overblik</span>
+  </button>
+  <button data-act="tab" data-tab="korsel">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.4-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.600 12 21 12 21z"/><circle cx="12" cy="10.500" r="2.200"/></svg><span>Kørsel</span>
+  </button>
+  <button data-act="tab" data-tab="bilag">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9.500 8h5M9.500 12h5"/></svg><span>Bilag</span>
+  </button>
+  <button data-act="tab" data-tab="salg">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5M8.500 13h7M8.500 17h4"/></svg><span>Salg</span>
+  </button>
+  <button data-act="tab" data-tab="mere">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.500" cy="12" r="1.400"/><circle cx="12" cy="12" r="1.400"/><circle cx="18.500" cy="12" r="1.400"/></svg><span>Mere</span>
+  </button>
+</nav>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<input type="file" id="fileCam" accept="image/*" capture="environment" hidden>
+<input type="file" id="fileAny" accept="image/*,application/pdf" multiple hidden>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script type="module" src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+</script>
+</body>
+</html>
